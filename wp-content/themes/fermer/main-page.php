@@ -47,7 +47,8 @@ get_header();
     <div class="main-form__container main-form-single"
          style="background-image: url(<?php the_field('kartinka_dlya_fona_ekoturizm_preimushhestvo_otdyha_na_ferme', 5); ?>)">
         <div class="wrapper">
-            <div class="main-form__video"
+            <?php $post_id = get_the_ID(); ?>
+            <a  class="main-form__video fresco" href="<?php echo the_field('ssylka_na_videoekoturizm_preimushhestvo_otdyha_na_ferme', 5); ?>"
                  style="background-image: url(<?php the_field('kartinka_dlya_fona_ekoturizm_preimushhestvo_otdyha_na_ferme', 5); ?>)">
                 <svg width="142" height="142" viewBox="0 0 142 142" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M71 0C31.8482 0 0 31.8513 0 71C0 110.149 31.8482 142 71 142C110.152 142 142 110.149 142 71C142 31.8513 110.152 0 71 0Z"
@@ -75,7 +76,7 @@ get_header();
                         </linearGradient>
                     </defs>
                 </svg>
-            </div>
+            </a>
             <div class="main-form-single__content">
                 <div class="main-form-single__title">
                     <?php the_field('zagolovok_formy', 5); ?>
