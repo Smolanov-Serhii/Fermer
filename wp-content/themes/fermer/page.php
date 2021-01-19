@@ -14,25 +14,48 @@
 
 get_header();
 ?>
+<?php
+while (have_posts()) :
+    the_post();
 
-	<main id="primary" class="site-main">
+    get_template_part('template-parts/content', 'market');
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
+    // If comments are open or we have at least one comment, load up the comment template.
+    if (comments_open() || get_comments_number()) :
+        comments_template();
+    endif;
 
-			get_template_part( 'template-parts/content', 'page' );
+endwhile; // End of the loop.
+?>
+    <?php
+        if( is_page('Корзина') ){
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+        } else {
+            ?>
 
-		endwhile; // End of the loop.
-		?>
+            <section class="viewed">
+                <div>
+                    <?php
+                    echo do_shortcode("[recently_viewed_products]");
+                    ?>
+                </div>
+            </section>
 
-	</main><!-- #main -->
+            <section class="featured">
+                <div>
+                    <?php
+                    echo do_shortcode("[featured_products]");
+                    ?>
+                </div>
+            </section>
+
+            <?php
+        }
+    ?>
+
+
+<?php get_template_part('inc/mailing'); ?>  <!-- Блок подписки -->
 
 <?php
-get_sidebar();
+
 get_footer();

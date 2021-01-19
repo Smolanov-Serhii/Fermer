@@ -52,6 +52,7 @@ if ( ! function_exists( 'fermer_setup' ) ) :
 			array(
 				'main-menu' => esc_html__( 'Главное меню', 'fermer' ),
 				'additional-menu' => esc_html__( 'Доп. меню', 'fermer' ),
+                'footer-menu' => esc_html__( 'Меню подвал', 'fermer' ),
 			)
 		);
 
@@ -122,18 +123,32 @@ add_action( 'after_setup_theme', 'fermer_content_width', 0 );
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
+
+
+
 function fermer_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'fermer' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'fermer' ),
+			'name'          => esc_html__( 'Виджет', 'fermer' ),
+			'id'            => 'widget',
+			'description'   => esc_html__( 'Добавте содержимое сюда.', 'fermer' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 		)
 	);
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Подписка', 'fermer' ),
+            'id'            => 'newsletter',
+            'description'   => esc_html__( 'Добавте содержимое сюда.', 'fermer' ),
+            'before_widget' => '<section id="newsletter" class="newsletter">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h3 class="newsletter__title section-title">',
+            'after_title'   => '</h3>',
+        )
+    );
 }
 add_action( 'widgets_init', 'fermer_widgets_init' );
 
@@ -266,6 +281,23 @@ add_action('customize_register', function($customizer) {
         )
 
     );
+    $customizer->add_setting('vk',
+
+        array('default' => 'url')
+
+    );
+
+    $customizer->add_control('vk', array(
+
+            'label' => 'vk',
+
+            'section' => 'section_one',
+
+            'type' => 'url',
+
+        )
+
+    );
     $customizer->add_setting('instagram',
 
         array('default' => 'url')
@@ -275,23 +307,6 @@ add_action('customize_register', function($customizer) {
     $customizer->add_control('instagram', array(
 
             'label' => 'instagram',
-
-            'section' => 'section_one',
-
-            'type' => 'url',
-
-        )
-
-    );
-    $customizer->add_setting('youtube',
-
-        array('default' => 'url')
-
-    );
-
-    $customizer->add_control('youtube', array(
-
-            'label' => 'youtube',
 
             'section' => 'section_one',
 
@@ -419,4 +434,100 @@ function register_post_types(){
         'rewrite'             => true,
         'query_var'           => true,
     ] );
+}
+
+
+
+
+remove_action('woocommerce_before_shop_loop','woocommerce_result_count',20);
+remove_action('woocommerce_before_shop_loop','woocommerce_catalog_ordering',30);
+remove_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_product_thumbnail',10);
+add_action('woocommerce_before_shop_loop_item_title', 'itemimage', 10);
+function itemimage(){
+    $imageitem = get_field('privyu_kartinka_dlya_stranicz');
+    echo '<img src="' . $imageitem . '">';
+}
+
+add_action('woocommerce_before_shop_loop', 'categoryname', 5);
+function categoryname(){
+    $lm_cats=array_shift(get_the_terms( $post->ID, 'product_cat' ));
+    $lm_cat_name=$lm_cats->name;
+    echo '<div class="category-title section-title">' . $lm_cat_name . '</div>';
+}
+
+add_action('woocommerce_before_shop_loop', 'categoryheader', 1);
+function categoryheader(){
+    $term = get_queried_object();
+    $image = get_field('izobrazhenie_v_shapku_kategorii_tovara', $term);
+    $title = get_field('zagolovok_kategorii', $term);
+    $subtitle = get_field('podzagolovok_kategorii', $term);
+    echo '<section class="main-page-content"
+         style="background-image: url('.$image.')">
+        <h1 class="main-page-content__title">'.$title.'</h1>
+        <h2 class="main-page-content__subtitle">'.$subtitle.'</h2>
+        </section>';
+}
+
+add_action( 'template_redirect', 'truemisha_recently_viewed_product_cookie', 20 );
+
+function truemisha_recently_viewed_product_cookie() {
+
+    // если находимся не на странице товара, ничего не делаем
+    if ( ! is_product() ) {
+        return;
+    }
+
+
+    if ( empty( $_COOKIE[ 'woocommerce_recently_viewed_2' ] ) ) {
+        $viewed_products = array();
+    } else {
+        $viewed_products = (array) explode( '|', $_COOKIE[ 'woocommerce_recently_viewed_2' ] );
+    }
+
+    // добавляем в массив текущий товар
+    if ( ! in_array( get_the_ID(), $viewed_products ) ) {
+        $viewed_products[] = get_the_ID();
+    }
+
+    // нет смысла хранить там бесконечное количество товаров
+    if ( sizeof( $viewed_products ) > 15 ) {
+        array_shift( $viewed_products ); // выкидываем первый элемент
+    }
+
+    // устанавливаем в куки
+    wc_setcookie( 'woocommerce_recently_viewed_2', join( '|', $viewed_products ) );
+
+}
+
+add_shortcode( 'recently_viewed_products', 'truemisha_recently_viewed_products' );
+
+function truemisha_recently_viewed_products() {
+
+    if( empty( $_COOKIE[ 'woocommerce_recently_viewed_2' ] ) ) {
+        $viewed_products = array();
+    } else {
+        $viewed_products = (array) explode( '|', $_COOKIE[ 'woocommerce_recently_viewed_2' ] );
+    }
+
+    if ( empty( $viewed_products ) ) {
+        return;
+    }
+
+    // надо ведь сначала отображать последние просмотренные
+    $viewed_products = array_reverse( array_map( 'absint', $viewed_products ) );
+
+    $title = '<div class="section-title">Вы смотрели</div>';
+
+    $product_ids = join( ",", $viewed_products );
+
+    return $title . do_shortcode( "[products ids='$product_ids']" );
+
+}
+add_filter('woocommerce_currency_symbol', 'change_existing_currency_symbol', 10, 2);
+
+function change_existing_currency_symbol( $currency_symbol, $currency ) {
+    switch( $currency ) {
+        case 'RUB': $currency_symbol = ' ₽'; break;
+    }
+    return $currency_symbol;
 }
