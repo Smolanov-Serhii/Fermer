@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$(document ).ready(function() {
     if ($('.pets').length){
         var PetSlider = new Swiper('.pets .swiper-container', {
             // Optional parameters
@@ -29,6 +29,41 @@ $( document ).ready(function() {
 
     if ($('input.tnp-email').length){
         $("input.tnp-email").attr("placeholder", "Введите Ваш E-mail");
+    }
+
+    if ($('.viewed .products.columns-4').length){
+        $('.viewed .products.columns-4').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            infinite: false,
+            // autoplay: true,
+            arrows:true,
+            autoplaySpeed: 2000,
+        });
+    }
+
+    if ($('.featured .products.columns-4').length){
+        $('.featured .products.columns-4').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            infinite: false,
+            // autoplay: true,
+            arrows:true,
+            autoplaySpeed: 2000,
+        });
+    }
+
+    if ($('.reviews').length){
+        $('.reviews .strong-content').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            rows: 2,
+            fade: true,
+            infinite: true,
+            // autoplay: true,
+            arrows:true,
+            autoplaySpeed: 2000,
+        });
     }
 });
 

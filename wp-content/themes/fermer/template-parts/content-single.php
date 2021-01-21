@@ -9,6 +9,11 @@
 
 ?>
 
+
+
+	<?php fermer_post_thumbnail(); ?>
+
+	<div class="entry-content">
 		<?php
 		the_content(
 			sprintf(
@@ -32,6 +37,6 @@
 			)
 		);
 		?>
-
+	</div><!-- .entry-content -->
 
 

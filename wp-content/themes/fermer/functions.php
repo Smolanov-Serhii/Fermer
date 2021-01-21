@@ -159,8 +159,8 @@ function fermer_scripts() {
     wp_enqueue_style( 'fermer-style', get_template_directory_uri() . '/dist/css/style.css', array(), _S_VERSION );
     wp_enqueue_style( 'fermer-fresco', get_template_directory_uri() . '/dist/css/fresco.css', array(), _S_VERSION );
 	wp_style_add_data( 'fermer-style', 'rtl', 'replace' );
-    wp_enqueue_script('jquery', get_template_directory_uri() . '/dist/js/jquery-3.5.1.js');
-    wp_enqueue_script('fresco', get_template_directory_uri() . '/dist/js/fresco.min.js');
+//    wp_enqueue_script('jquery', get_template_directory_uri() . '/dist/js/jquery-3.5.1.js');
+//    wp_enqueue_script('fresco', get_template_directory_uri() . '/dist/js/fresco.min.js');
     wp_enqueue_script('newscript', get_template_directory_uri() . '/dist/js/common.js');
 	wp_enqueue_script( 'fermer-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
@@ -436,8 +436,12 @@ function register_post_types(){
     ] );
 }
 
-
-
+add_action('woocommerce_single_product_summary', 'addtitleproduct', 9);
+function addtitleproduct(){
+    echo '<h1 class="product-title">';
+    echo the_title();
+    echo'</h1>';
+}
 
 remove_action('woocommerce_before_shop_loop','woocommerce_result_count',20);
 remove_action('woocommerce_before_shop_loop','woocommerce_catalog_ordering',30);
@@ -466,6 +470,17 @@ function categoryheader(){
         <h1 class="main-page-content__title">'.$title.'</h1>
         <h2 class="main-page-content__subtitle">'.$subtitle.'</h2>
         </section>';
+}
+
+add_action('woocommerce_after_shop_loop', 'categorycolumns', 11);
+function categorycolumns(){
+    $term = get_queried_object();
+    $textleft = get_field('opisanie_dlya_kategorii_levyj_stolbecz', $term);
+    $textright = get_field('opisanie_dlya_kategorii_pravyj_stolbecz', $term);
+
+    echo '<div class="category-columns-about">
+           <div class="category-columns-item">' . $textleft . '</div>
+           <div class="category-columns-item">' . $textright . '</div>';
 }
 
 add_action( 'template_redirect', 'truemisha_recently_viewed_product_cookie', 20 );
@@ -531,3 +546,5 @@ function change_existing_currency_symbol( $currency_symbol, $currency ) {
     }
     return $currency_symbol;
 }
+
+
