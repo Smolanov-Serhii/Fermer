@@ -31,7 +31,7 @@ get_header();
         ?>
     </section>
     <?php
-        if( is_page('cart')){
+        if( is_page('cart') || is_page('checkout')){
 
         } else {
             ?>

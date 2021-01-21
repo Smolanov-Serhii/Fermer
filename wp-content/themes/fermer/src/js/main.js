@@ -1,4 +1,36 @@
 $(document ).ready(function() {
+
+    if ($('.product-quantity').length){
+        $( ".product-quantity" ).each(function( index ) {
+            let elem = $(this).find('input').closest('.quantity');
+            $(elem).append('<div class="number"></div>')
+            $(elem).find('.number').append('<button class="number-minus" type="button">-</button>')
+            $(this).find('.number').append($(this).find('.input-text'));
+            $(elem).find('.number').append('<button class="number-plus" type="button">+</button>')
+        });
+
+        $( ".number-plus, .number-minus" ).click(function() {
+            $('td.actions .button').removeAttr('disabled');
+        });
+    }
+
+    if ($('.single-product').length){
+
+        $('.summary.entry-summary .cart').append($('div.yith-wcwl-add-button'));
+
+        $( ".single-product .cart" ).each(function( index ) {
+            let elem = $(this).find('input').closest('.quantity');
+            $(elem).append('<div class="number"></div>')
+            $(elem).find('.number').append('<button class="number-minus" type="button">-</button>')
+            $(this).find('.number').append($(this).find('.input-text'));
+            $(elem).find('.number').append('<button class="number-plus" type="button">+</button>')
+        });
+
+
+        $( ".number-plus, .number-minus" ).click(function() {
+            $('td.actions .button').removeAttr('disabled');
+        });
+    }
     if ($('.pets').length){
         var PetSlider = new Swiper('.pets .swiper-container', {
             // Optional parameters
@@ -63,6 +95,58 @@ $(document ).ready(function() {
             // autoplay: true,
             arrows:true,
             autoplaySpeed: 2000,
+        });
+    }
+
+    if ($('.quantity div.number').length){
+        $( '.quantity div.number' ).each(function( index ) {
+            let col = $(this).find('input');
+            let plus = $(this).find('.number-plus');
+            let minus = $(this).find('.number-minus');
+            plus.click(function() {
+                col.val(parseInt(col.val())+1);
+                var check = col.val();
+                if (check > 1){
+                    minus.removeClass('disable');
+                }
+            });
+            minus.click(function() {
+                var check = col.val();
+                if (check > 1){
+                    col.val(parseInt(col.val())-1);
+                    minus.removeClass('disable');
+                } else {
+                    minus.addClass('disable');
+                }
+
+            });
+        });
+    }
+    if ($('.custom-product-midle .number').length){
+        $( '.custom-product-midle .number' ).each(function( index ) {
+            let col = $(this).find('input');
+            let plus = $(this).find('.number-plus');
+            let minus = $(this).find('.number-minus');
+            let clone = $('.quantity').find('input');
+            plus.click(function() {
+                clone.val(parseInt(col.val())+1);
+                col.val(parseInt(col.val())+1);
+                var check = col.val();
+                if (check > 1){
+                    minus.removeClass('disable');
+                }
+            });
+            minus.click(function() {
+                var check = col.val();
+                if (check > 1){
+                    clone.val(parseInt(col.val())-1);
+                    col.val(parseInt(col.val())-1);
+                    minus.removeClass('disable');
+                } else {
+                    minus.addClass('disable');
+                }
+
+            });
         });
     }
 });

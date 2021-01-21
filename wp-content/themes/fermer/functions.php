@@ -149,6 +149,17 @@ function fermer_widgets_init() {
             'after_title'   => '</h3>',
         )
     );
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Карточка товара', 'fermer' ),
+            'id'            => 'cartwidget',
+            'description'   => esc_html__( 'Добавте содержимое сюда.', 'fermer' ),
+            'before_widget' => '<section id="cartwidget" class="newsletter">',
+            'after_widget'  => '</section>',
+            'before_title'  => '<h3 class="newsletter__title section-title" style="display: none">',
+            'after_title'   => '</h3>',
+        )
+    );
 }
 add_action( 'widgets_init', 'fermer_widgets_init' );
 
@@ -436,12 +447,46 @@ function register_post_types(){
     ] );
 }
 
+add_action('woocommerce_single_product_summary', 'AddAtribut', 10);
+function AddAtribut(){
+    $addatrib = get_field('edinicza_izmereniya_dlya_tovara');
+    echo '<div class="custom-product-price">';
+    echo '<div class="custom-product-left">';
+    echo '<div class="custom_weight">' . $addatrib . '</div>';
+        global $product;
+    echo '<div class="custom_price">' . $product->get_regular_price() . ' ₽</div>';
+    echo '</div>';
+    echo '<div class="custom-product-midle">';
+    echo '<div class="number">';
+    echo '<button class="number-minus" type="button">-</button>';
+    echo '<input type="number" value="1">';
+    echo '<button class="number-plus" type="button">+</button>';
+    echo '</div>';
+    echo '</div>';
+    echo '<div class="custom-product-right">';
+        dynamic_sidebar( 'cartwidget' );
+    echo '</div>';
+    echo '</div>';
+}
+
+
+
+add_action('woocommerce_single_product_summary', 'addatributes', 30);
+function addatributes(){
+    global $product;
+    echo $product->list_attributes();
+}
+
+remove_action('woocommerce_single_product_summary','woocommerce_template_single_price',10);
+
 add_action('woocommerce_single_product_summary', 'addtitleproduct', 9);
 function addtitleproduct(){
     echo '<h1 class="product-title">';
     echo the_title();
     echo'</h1>';
 }
+remove_action('woocommerce_single_product_summary','woocommerce_template_single_add_to_cart',30);
+add_action('woocommerce_single_product_summary','woocommerce_template_single_add_to_cart',31);
 
 remove_action('woocommerce_before_shop_loop','woocommerce_result_count',20);
 remove_action('woocommerce_before_shop_loop','woocommerce_catalog_ordering',30);
@@ -546,5 +591,22 @@ function change_existing_currency_symbol( $currency_symbol, $currency ) {
     }
     return $currency_symbol;
 }
+
+/**
+ * Removes the "Additional Information" tab that displays the product attributes.
+ *
+ * @param array $tabs WooCommerce tabs to display.
+ *
+ * @return array WooCommerce tabs to display, minus "Additional Information".
+ */
+function tutsplus_remove_product_attributes_tab( $tabs ) {
+
+    unset( $tabs['additional_information'] );
+
+    return $tabs;
+
+}
+
+add_filter( 'woocommerce_product_tabs', 'tutsplus_remove_product_attributes_tab', 100 );
 
 
