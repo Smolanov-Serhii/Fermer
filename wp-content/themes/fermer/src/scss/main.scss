@@ -1087,11 +1087,11 @@ body {
     margin-bottom: 80px;
   }
   .products.columns-4{
-    max-width: 1155px;
+    max-width: 1165px;
     //padding: 0 70px;
     margin: 60px auto 60px auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     &:before, &:after{
       display: none;
     }
@@ -1110,8 +1110,12 @@ body {
       padding: 20px 0;
       overflow: visible;
     }
+    //> li.slick-slide{
+    //  margin: 0;
+    //  width: calc(25% - 20px);
+    //}
     > li, .slick-slide{
-      width: calc(25% - 20px);
+      width: calc(25% - 15px);
       border-radius: 8px;
       border: 1px solid rgba(122, 153, 169, 0.4);
       box-sizing: border-box;
@@ -1119,7 +1123,7 @@ body {
       border-radius: 8px;
       padding: 46px 20px 30px 20px;
       text-align: center;
-      margin: 0;
+      margin: 0 15px!important;
       transition: 0.3s;
       &:hover{
         background-color: #FAF9E9;
@@ -1481,6 +1485,7 @@ section.reviews{
   background-color: transparent;
   .woocommerce-product-gallery{
     z-index: 2;
+    filter: drop-shadow(4px 4px 35px rgba(0, 0, 0, 0.14));
   }
   .woocommerce-product-gallery__image{
     background-color: transparent;
@@ -1563,6 +1568,7 @@ section.reviews{
       justify-content: space-between;
       padding: 40px 0;
       border-bottom: 2px solid rgba(122, 153, 169, 0.3);
+      width: 100%;
       .custom-product-left{
         width: 25%;
         .custom_weight{
@@ -1584,6 +1590,7 @@ section.reviews{
       .custom-product-midle{
         width: 30%;
         padding-top: 66px;
+        text-align: center;
       }
       .custom-product-right{
         width: 50%;
@@ -1725,7 +1732,10 @@ section.reviews{
       position: relative;
       padding: 40px 0;
       border-bottom: 2px solid rgba(122, 153, 169, 0.3);
-      p{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      p, pre, li{
         font-style: normal;
         font-weight: normal;
         font-size: 18px;
@@ -1733,7 +1743,9 @@ section.reviews{
         color: #000000;
         font-family: Montserrat-Regular;
         padding-left: 116px;
-        &:first-child{
+        max-width: 100%;
+        white-space: break-spaces;
+        strong{
           position: absolute;
           left: 0;
           top: 40px;
@@ -1754,12 +1766,16 @@ section.reviews{
       .quantity{
         display: none;
       }
+      .product-title{
+        width: 100%;
+      }
     }
     .woocommerce-product-gallery{
       max-width: 522px;
     }
     .related.products{
       overflow: visible;
+      max-width: 1196px;
       .slick-track{
         display: flex;
         align-items: stretch;
@@ -1784,16 +1800,28 @@ section.reviews{
       filter: drop-shadow(4px 4px 35px rgba(0, 0, 0, 0.14));
       border-radius: 8px;
       width: 100%;
+      position: relative;
+      &:before{
+        position: absolute;
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        filter: drop-shadow(4px 4px 35px rgba(0, 0, 0, 0.14));
+      }
     }
     .flex-control-nav{
       margin: 50px -20px 0 -20px!important;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       li{
         margin: 0 20px!important;
         border: 1px solid rgba(122, 153, 169, 0.4);
         box-sizing: border-box;
         border-radius: 8px;
+        overflow: hidden;
       }
     }
   }
