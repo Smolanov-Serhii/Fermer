@@ -1,5 +1,20 @@
 $(document ).ready(function() {
 
+    // if ($('.add_to_wishlist.single_add_to_wishlist').length){
+    //     $( ".add_to_wishlist.single_add_to_wishlist" ).click(function() {
+    //         $(this).removeClass('add_to_wishlist');
+    //         $(this).removeClass('single_add_to_wishlist');
+    //         $(this).addClass('delete_item');
+    //     });
+    // }
+    // if ($('.yith-wcwl-add-button a.delete_item').length){
+    //     $( ".yith-wcwl-add-button a.delete_item" ).click(function() {
+    //         $(this).removeClass('delete_item');
+    //         $(this).addClass('add_to_wishlist');
+    //         $(this).addClass('single_add_to_wishlist');
+    //     });
+    // }
+
     if ($('.product-quantity').length){
         $( ".product-quantity" ).each(function( index ) {
             let elem = $(this).find('input').closest('.quantity');

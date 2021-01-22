@@ -1187,6 +1187,9 @@ body {
       margin-bottom: 22px;
     }
   }
+  .entry-footer{
+    display: none;
+  }
   .cart-wrapper{
     padding-top: 230px;
     &__title{
@@ -1487,28 +1490,52 @@ section.reviews{
     .product{
       z-index: 2;
     }
+    .yith-wcwl-add-button{
+      margin-top: 40px;
+      .view-wishlist{
+        display: none;
+      }
+      span{
+        display: none;
+      }
+      .delete_item{
+        i{
+          &:before{
+            content: "";
+            width: 40px;
+            height: 40px;
+            display: block;
+            background-image: url(image/heart-active.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+        }
+      }
+      .add_to_wishlist{
+        i{
+          &:before{
+            content: "";
+            width: 40px;
+            height: 40px;
+            display: block;
+            background-image: url(image/heart.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+        }
+      }
+    }
     .summary.entry-summary{
+      display: flex;
+      flex-wrap: wrap;
       form.cart{
         display: flex;
         align-items: center;
-        .yith-wcwl-add-button{
-          margin-top: 40px;
-          span{
-            display: none;
-          }
-          i{
-            &:before{
-              content: "";
-              width: 40px;
-              height: 40px;
-              display: block;
-              background-image: url(image/heart.svg);
-              background-size: contain;
-              background-repeat: no-repeat;
-              background-position: center;
-            }
-          }
-        }
+      }
+      .yith-wcwl-add-to-wishlist{
+        margin-top: 0;
       }
     }
     .add-to-cart, .single_add_to_cart_button{
