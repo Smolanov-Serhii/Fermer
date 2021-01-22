@@ -29,32 +29,6 @@
   font-family: 'Montserrat-SemiBold';
   src: url("../../fonts/Montserrat-SemiBold.ttf") format("truetype");
 }
-.fix_cart_btn{
-  position: fixed;
-  right: 30px;
-  bottom: 30px;
-  background-image: url("image/korzina.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 80% auto;
-  background-color: white;
-  border: 1px solid rgba(122, 153, 169, 0.4);
-  box-sizing: border-box;
-  box-shadow: 4px 4px 26px rgba(0, 0, 0, 0.14);
-  border-radius: 8px;
-  width: 100px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .fix_cart_count{
-    font-size: 48px;
-    line-height: 59px;
-    font-family: Montserrat-Medium;
-    text-align: center;
-    color: #7a99a9;
-  }
-}
 button.slick-arrow{
   color: transparent;
   background-color: transparent;
@@ -146,6 +120,22 @@ body {
     justify-content: flex-end;
   }
   &__contacts{
+    position: relative;
+    .icons-account-menu{
+      position: absolute;
+      top: -100%;
+      right: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      .fix_cart_count{
+        font-size: 48px;
+        line-height: 59px;
+        font-family: Montserrat-Medium;
+        text-align: center;
+        color: #7a99a9;
+      }
+    }
     a{
       font-family: Montserrat-SemiBold;
       font-weight: 600;
@@ -824,6 +814,7 @@ body {
   background-color: #FAF9E9;
   flex-direction: column;
   padding: 80px 100px;
+  width: 100%;
   span{
     font-weight: normal;
     font-size: 18px;
@@ -1183,7 +1174,7 @@ body {
     }
   }
 }
-.products-block{
+.entry-content{
   margin: auto;
   .products.columns-4{
     padding: 0 0 0 22px;
@@ -1277,6 +1268,8 @@ body {
 section.viewed{
   padding-top: 60px;
   clear: both;
+  max-width: 1050px;
+  margin: auto;
   &:after{
     display: block;
     content: "";
@@ -1286,17 +1279,28 @@ section.viewed{
     background: rgba(122, 153, 169, 0.3);
     border-radius: 12px;
   }
+  .woocommerce.columns-4{
+    overflow: visible;
+  }
 }
 section.featured{
   padding-top: 100px;
+  max-width: 1050px;
+  margin: auto;
+  .woocommerce.columns-4{
+    overflow: visible;
+  }
 }
 .category-columns-about{
-  max-width: 1050px;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin: auto;
-  padding-bottom: 50px;
+  flex-direction: column;
+  align-items: center;
+  &-wrapper{
+    max-width: 1050px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
   .category-columns-item{
     width: calc(50% - 40px);
     p{
@@ -1311,6 +1315,8 @@ section.featured{
 section.reviews{
   padding-bottom: 60px;
   padding-top: 60px;
+  max-width: 1050px;
+  margin: auto;
   &__title{
     margin-bottom: 50px;
   }
@@ -1813,6 +1819,17 @@ section.reviews{
         }
       }
     }
+  }
+}
+.static{
+  &-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  &-slide{
+    width: calc(33.3% - 60px);
+    margin-bottom: 40px;
   }
 }
 

@@ -75,16 +75,7 @@
         </div>
     </div>
 </footer><!-- #colophon -->
-<?php
-if (class_exists('WooCommerce' )){
-    global $woocommerce; ?>
-    <a href="<?php echo $woocommerce->cart->get_cart_url() ?>" class="fix_cart_btn fz_an">
-<!--        <span class="basket-btn__label">Корзина</span>-->
-<!--        <span class="fix_cart_count">--><?php //echo sprintf($woocommerce->cart->cart_contents_count); ?><!--</span>-->
-    </a>
-    <?php
-}
-?>
+
 
 <?php wp_footer(); ?>
 

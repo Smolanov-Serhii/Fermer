@@ -53,6 +53,7 @@ if ( ! function_exists( 'fermer_setup' ) ) :
 				'main-menu' => esc_html__( 'Главное меню', 'fermer' ),
 				'additional-menu' => esc_html__( 'Доп. меню', 'fermer' ),
                 'footer-menu' => esc_html__( 'Меню подвал', 'fermer' ),
+                'icons-menu' => esc_html__( 'Меню иконок', 'fermer' ),
 			)
 		);
 
@@ -468,8 +469,24 @@ function AddAtribut(){
     echo '</div>';
     echo '</div>';
 }
-
-
+add_action('woocommerce_after_shop_loop', 'fermer_products_card_block', 100);
+function fermer_products_card_block(){
+    echo get_template_part('inc/reviews');
+    echo '<section class="viewed">';
+    echo '<div>';
+            echo do_shortcode("[recently_viewed_products]");
+    echo '</div>';
+    echo '</section>';
+    echo '<section class="featured">';
+    echo '<div class="featured__title section-title">';
+    echo 'Рекомендуем';
+    echo '</div>';
+    echo '<div>';
+            echo do_shortcode("[featured_products]");
+    echo '</div>';
+    echo '</section>';
+    echo get_template_part('inc/mailing');
+}
 
 add_action('woocommerce_single_product_summary', 'addatributes', 30);
 function addatributes(){
@@ -501,7 +518,7 @@ add_action('woocommerce_before_shop_loop', 'categoryname', 5);
 function categoryname(){
     $lm_cats=array_shift(get_the_terms( $post->ID, 'product_cat' ));
     $lm_cat_name=$lm_cats->name;
-    echo '<div class="category-title section-title">' . $lm_cat_name . '</div>';
+    echo '<h1 class="category-title section-title">' . $lm_cat_name . '</h1>';
 }
 
 add_action('woocommerce_before_shop_loop', 'categoryheader', 1);
@@ -523,9 +540,9 @@ function categorycolumns(){
     $textleft = get_field('opisanie_dlya_kategorii_levyj_stolbecz', $term);
     $textright = get_field('opisanie_dlya_kategorii_pravyj_stolbecz', $term);
 
-    echo '<div class="category-columns-about">
+    echo '<div class="category-columns-about"><div class="category-columns-about-wrapper">
            <div class="category-columns-item">' . $textleft . '</div>
-           <div class="category-columns-item">' . $textright . '</div>';
+           <div class="category-columns-item">' . $textright . '</div></div>';
 }
 
 add_action( 'template_redirect', 'truemisha_recently_viewed_product_cookie', 20 );
