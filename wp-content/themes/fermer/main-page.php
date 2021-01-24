@@ -18,10 +18,10 @@ get_header();
 <section class="family-farm">
     <h3 class="family-farm__title section-title"><?php the_field('zagolovok_sekczii', 5); ?></h3>
     <div class="family-farm__columns">
-        <div class="family-farm__column">
+        <div class="family-farm__column wow fadeInLeft" data-wow-duration="0.4s" data-wow-delay="0.6s" data-wow-offset="150" >
             <?php the_field('opisanie_levogo_stolbcza', 5); ?>
         </div>
-        <div class="family-farm__column">
+        <div class="family-farm__column wow fadeInRight" data-wow-duration="0.4s" data-wow-delay="0.6s" data-wow-offset="150" >
             <?php the_field('pravyj_stolbecz_sekczii', 5); ?>
         </div>
     </div>
@@ -32,7 +32,7 @@ get_header();
         </div>
     </a>
 </section>
-<section class="products">
+<section class="products wow fadeInUp" data-wow-duration="0.4s" data-wow-delay="0.6s" data-wow-offset="150">
     <div class="products__title section-title">
         <?php the_field('zagolovok_sekczii_fermer', 5); ?>
     </div>
