@@ -1,18 +1,16 @@
 <?php
 /**
- * Template Name: Страница для контента
+ * Template Name: Отзывы
  *
  */
-
 
 get_header();
 ?>
 
-    <main id="page-default" class="page-default">
-        <div class="default__title section-title">
+    <main id="recall" class="recall">
+        <div class="recall__title section-title">
             <?php the_title();?>
         </div>
-
         <?php
         while ( have_posts() ) :
             the_post();

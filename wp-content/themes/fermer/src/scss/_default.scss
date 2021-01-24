@@ -1,7 +1,81 @@
+html{
+  font-family: Montserrat-Regular;
+  font-size: 18px;
+  line-height: 120%;
+}
+pre{
+  white-space: break-spaces;
+}
+p, pre{
+  font-family: Montserrat-Regular;
+  font-size: 18px;
+  line-height: 1.5em;
+  margin-bottom: 0.9em;
+}
+h1{
+  font-family: Montserrat-SemiBold;
+  font-size: 64px;
+}
+ul,ol{
+  list-style: disc;
+  margin-left: 1.2em;
+  margin-bottom: 1.2em;
+  li{
+    margin-bottom: 0.6em;
+  }
+}
+strong, b{
+  font-weight: 600;
+}
+em{
+  font-style: italic;
+}
+h2{
+  font-family: Montserrat-SemiBold;
+  font-size: 56px;
+}
+h3{
+  font-family: Montserrat-SemiBold;
+  font-size: 48px;
+}
+h4{
+  font-family: Montserrat-SemiBold;
+  font-size: 40px;
+}
+h5{
+  font-family: Montserrat-SemiBold;
+  font-size: 32px;
+}
+h6{
+  font-family: Montserrat-SemiBold;
+  font-size: 24px;
+}
+a.button{
+  background-color: #7a99a9!important;
+  font-family: Montserrat-SemiBold;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: uppercase;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: .3s;
+  padding: 14px 30px;
+  &:hover{
+    background-color: #c9ae1f!important;
+  }
+}
+a{
+  color: #c9ae1f;
+}
 table{
   th{
     font-family: Montserrat-SemiBold;
     background-color: #f8e688;
+    font-weight: 600;
   }
   td{
     font-family: Montserrat-Regular;
@@ -13,6 +87,7 @@ table{
     line-height: 28px;
     color: #000000;
     border-top: 1px solid #f8e688;
+    padding: 10px;
     &.actions{
       text-align: left;
       .button{
@@ -22,12 +97,15 @@ table{
   }
   tr{
     border: 1px solid #f8e688;
+    td, th{
+      padding: 10px;
+    }
     &:nth-child(even){
       background-color: #FEFBF2;
     }
   }
 }
-input{
+input[type="number"]{
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;

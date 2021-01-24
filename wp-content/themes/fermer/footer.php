@@ -69,7 +69,7 @@
                 </div>
                 <div class="footer__btn">
                     <a href="">перейти в каталог</a>
-                    <a href="">заказать экскурсию</a>
+                    <a class="js-exursion" href="">заказать экскурсию</a>
                 </div>
             </div>
         </div>

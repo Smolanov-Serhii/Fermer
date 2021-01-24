@@ -1,10 +1,4 @@
 <?php
-/**
- * Template Name: Страница для контента
- *
- */
-
-
 get_header();
 ?>
 
