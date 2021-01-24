@@ -93,13 +93,24 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 239vw * $px;
-  background: linear-gradient(180deg, rgba(164, 244, 255, 0.576042) 0%, rgba(255, 255, 255, 0) 100%);
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 2;
+  &:before{
+    content: "";
+    display: flex;
+    flex-direction: column;
+    height: 342px;
+    background: linear-gradient(180deg, rgba(164, 244, 255, 0.576042) 0%, rgba(255, 255, 255, 0) 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    pointer-events: none;
+  }
   .icons-account-menu{
     #icons-menu{
       padding-top: 7px;
@@ -2294,6 +2305,7 @@ section.reviews{
       .entry-title{
         font-size: 30px;
         margin-bottom: 30px;
+        text-transform: uppercase;
       }
       .post-thumbnail{
         width: 25%;

@@ -171,7 +171,6 @@ add_action( 'widgets_init', 'fermer_widgets_init' );
  */
 function fermer_scripts() {
     wp_enqueue_style( 'fermer-style', get_template_directory_uri() . '/dist/css/style.css', array(), _S_VERSION );
-    wp_enqueue_style( 'fermer-fresco', get_template_directory_uri() . '/dist/css/fresco.css', array(), _S_VERSION );
 	wp_style_add_data( 'fermer-style', 'rtl', 'replace' );
 //    wp_enqueue_script('jquery', get_template_directory_uri() . '/dist/js/jquery-3.5.1.js');
 //    wp_enqueue_script('fresco', get_template_directory_uri() . '/dist/js/fresco.min.js');
