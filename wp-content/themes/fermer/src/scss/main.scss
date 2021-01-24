@@ -2270,4 +2270,42 @@ section.reviews{
     }
   }
 }
+.search{
+  .page-default{
+    .page-header{
+      margin-bottom: 30px;
+    }
+    .page-title{
+      font-size: 36px;
+      color: black;
+    }
+    article{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 30px 0;
+      padding: 30px;
+      background-color: rgba(248,230,136,.1);
+      box-shadow: 4px 4px 26px rgba(0, 0, 0, 0.14);
+      border-radius: 8px;
+      .entry-header{
+        width: 100%;
+      }
+      .entry-title{
+        font-size: 30px;
+        margin-bottom: 30px;
+      }
+      .post-thumbnail{
+        width: 25%;
+        img{
+          width: 100%;
+          height: auto;
+        }
+      }
+      .entry-summary{
+        width: calc(75% - 30px);
+      }
+    }
+  }
+}
 @import "media";
