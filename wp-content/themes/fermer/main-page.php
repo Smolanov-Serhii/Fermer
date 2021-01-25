@@ -18,10 +18,10 @@ get_header();
 <section class="family-farm">
     <h3 class="family-farm__title section-title"><?php the_field('zagolovok_sekczii', 5); ?></h3>
     <div class="family-farm__columns">
-        <div class="family-farm__column wow fadeInLeft" data-wow-duration="0.4s" data-wow-delay="0.6s" data-wow-offset="150" >
+        <div class="family-farm__column">
             <?php the_field('opisanie_levogo_stolbcza', 5); ?>
         </div>
-        <div class="family-farm__column wow fadeInRight" data-wow-duration="0.4s" data-wow-delay="0.6s" data-wow-offset="150" >
+        <div class="family-farm__column">
             <?php the_field('pravyj_stolbecz_sekczii', 5); ?>
         </div>
     </div>
@@ -32,7 +32,7 @@ get_header();
         </div>
     </a>
 </section>
-<section class="products wow fadeInUp" data-wow-duration="0.4s" data-wow-delay="0.6s" data-wow-offset="150">
+<section class="products">
     <div class="products__title section-title">
         <?php the_field('zagolovok_sekczii_fermer', 5); ?>
     </div>
@@ -105,7 +105,7 @@ get_header();
                 $meta_values = get_post_meta($post_id, $key = 'ssylka_dlya_knopki_glavnogo_slajdera', true);
                 ?>
                 <li class="main-form__item">
-                    <a href="<?php echo the_permalink(); ?>" class="main-fotm__item-lnk">
+                    <a href="<?php echo the_permalink(); ?>" class="main-form__item-lnk">
                         <div class="main-form__item-image">
                             <?php if (has_post_thumbnail()) : ?>
                                 <?php the_post_thumbnail(); ?>
