@@ -149,7 +149,7 @@ get_header();
                 <?php the_field('opisanie_bloka_nasha_paseka', 5); ?>
             </div>
             <div class="apiary__links">
-                <div class="apiary__link">
+                <div class="apiary__link js-exursion">
                     <a href="<?php echo the_field('zakazat_ekskursiyu_ssylka', 5); ?>">заказать экскурсию</a>
                 </div>
                 <div class="apiary__link">

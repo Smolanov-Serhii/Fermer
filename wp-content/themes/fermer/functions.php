@@ -56,6 +56,7 @@ if ( ! function_exists( 'fermer_setup' ) ) :
 				'additional-menu' => esc_html__( 'Доп. меню', 'fermer' ),
                 'footer-menu' => esc_html__( 'Меню подвал', 'fermer' ),
                 'icons-menu' => esc_html__( 'Меню иконок', 'fermer' ),
+                'mobile-menu' => esc_html__( 'Мобильное меню', 'fermer' ),
 			)
 		);
 

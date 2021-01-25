@@ -14,6 +14,14 @@ $(document ).ready(function() {
     //     });
     // }
 
+    $( ".mobile-menu__burger" ).click(function() {
+        $('.mobile-menu__nav').addClass('show-menu');
+    });
+
+    $( ".close-nav-mobile" ).click(function() {
+        $('.mobile-menu__nav').removeClass('show-menu');
+    });
+
     if ($('.product-quantity').length){
         $( ".product-quantity" ).each(function( index ) {
             let elem = $(this).find('input').closest('.quantity');
