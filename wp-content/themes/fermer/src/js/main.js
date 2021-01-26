@@ -133,6 +133,38 @@ $(document ).ready(function() {
             // autoplay: true,
             arrows:true,
             autoplaySpeed: 2000,
+            responsive: [
+                {
+                    breakpoint: 1350,
+                    settings: {
+                        slidesToShow: 3,
+                        rows: 1,
+                        slidesToScroll: 1,
+                        fade: false,
+                        infinite: true
+                    }
+                },
+                {
+                    breakpoint: 1000,
+                    settings: {
+                        slidesToShow: 2,
+                        rows: 1,
+                        slidesToScroll: 1,
+                        fade: false,
+                        infinite: true
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        rows: 1,
+                        slidesToScroll: 1,
+                        fade: false,
+                        infinite: true
+                    }
+                }
+            ]
         });
     }
 
@@ -144,6 +176,38 @@ $(document ).ready(function() {
             // autoplay: true,
             arrows:true,
             autoplaySpeed: 2000,
+            responsive: [
+                {
+                    breakpoint: 1350,
+                    settings: {
+                        slidesToShow: 3,
+                        rows: 1,
+                        slidesToScroll: 1,
+                        fade: false,
+                        infinite: true
+                    }
+                },
+                {
+                    breakpoint: 1000,
+                    settings: {
+                        slidesToShow: 2,
+                        rows: 1,
+                        slidesToScroll: 1,
+                        fade: false,
+                        infinite: true
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        rows: 1,
+                        slidesToScroll: 1,
+                        fade: false,
+                        infinite: true
+                    }
+                }
+            ]
         });
     }
 
@@ -157,6 +221,18 @@ $(document ).ready(function() {
             // autoplay: true,
             arrows:true,
             autoplaySpeed: 2000,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 1,
+                        rows: 1,
+                        slidesToScroll: 1,
+                        fade: false,
+                        infinite: true
+                    }
+                }
+            ]
         });
     }
 
