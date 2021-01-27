@@ -14,6 +14,45 @@ $(document ).ready(function() {
     //     });
     // }
 
+    if ($('.eko-slider').length){
+        const ekoslider = new Swiper('.eko-slider .swiper-container', {
+            slidesPerView: 3,
+            spaceBetween: false,
+            observer: true,
+            loop: true,
+            lazy: true,
+            observeParents: true,
+            centeredSlides: true,
+            // grabCursor: true,
+            // effect: 'coverflow',
+            // coverflowEffect:{
+            //     stretch: 50,
+            //     slideShadows: true,
+            // },
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'fraction',
+                clickable: true,
+            },
+
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                900: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+                240: {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                    centeredSlides: false,
+                }
+            }
+        });
+    }
+
     $( ".mobile-menu__burger" ).click(function() {
         $('.mobile-menu__nav').addClass('show-menu');
     });

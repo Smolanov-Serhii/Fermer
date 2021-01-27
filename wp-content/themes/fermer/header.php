@@ -56,6 +56,17 @@
                 )
             );
             ?>
+            <div class="korzina">
+                <?php
+                if (class_exists('WooCommerce' )){
+                    global $woocommerce; ?>
+                    <a href="<?php echo $woocommerce->cart->get_cart_url() ?>" class="fix_cart_btn fz_an">
+                        <span class="fix_cart_count"><?php echo sprintf($woocommerce->cart->cart_contents_count); ?></span>
+                    </a>
+                    <?php
+                }
+                ?>
+            </div>
         </nav><!-- #site-navigation -->
         <div class="mobile-menu__nav">
             <div class="mobile-menu__socials">
@@ -162,19 +173,18 @@
                             )
                         );
                         ?>
+                        <div class="korzina">
+                            <?php
+                            if (class_exists('WooCommerce' )){
+                                global $woocommerce; ?>
+                                <a href="<?php echo $woocommerce->cart->get_cart_url() ?>" class="fix_cart_btn fz_an">
+                                    <span class="fix_cart_count"><?php echo sprintf($woocommerce->cart->cart_contents_count); ?></span>
+                                </a>
+                                <?php
+                            }
+                            ?>
+                        </div>
                     </nav><!-- #site-navigation -->
-<!--                    <div class="icons-account-menu__korzina">-->
-<!--                        --><?php
-//                        if (class_exists('WooCommerce' )){
-//                            global $woocommerce; ?>
-<!--                            <a href="--><?php //echo $woocommerce->cart->get_cart_url() ?><!--" class="fix_cart_btn fz_an">-->
-<!--                                <span class="basket-btn__label">Корзина</span>-->
-<!--                                <span class="fix_cart_count">--><?php //echo sprintf($woocommerce->cart->cart_contents_count); ?><!--</span>-->
-<!--                            </a>-->
-<!--                            --><?php
-//                        }
-//                        ?>
-<!--                    </div>-->
                 </div>
                 <a href="tel:<?php echo get_theme_mod('phone'); ?>"><?php echo get_theme_mod('phone'); ?></a>
                 <div class="header__btn">
