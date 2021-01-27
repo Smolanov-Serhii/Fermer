@@ -738,7 +738,7 @@ body {
 
   &__main-nav {
     min-width: 750px;
-    margin: 40px auto 0 auto;
+    margin: 30px auto 0 auto;
     @media all and (max-width: 1480px) {
       min-width: auto;
     }
@@ -919,7 +919,7 @@ body {
       font-family: Montserrat-Medium;
       font-style: normal;
       font-weight: 500;
-      font-size: 20px;
+      font-size: 18px;
       line-height: 24px;
       color: $darkcolor;
       margin: 0 18px;
@@ -993,7 +993,7 @@ body {
 }
 
 .main-page-content {
-  padding-top: 274vw * $px;
+  padding-top: 284vw * $px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom center;
@@ -1015,8 +1015,8 @@ body {
 
   &__title {
     font-weight: 600;
-    font-size: 64px;
-    line-height: 78px;
+    font-size: 48px;
+    line-height: 130%;
     font-family: Montserrat-SemiBold;
     max-width: 840px;
     margin: auto;
@@ -1025,10 +1025,10 @@ body {
     position: relative;
     color: $darkcolor;
     @media all and (max-width: 1180px) {
-      font-size: 58px;
+      font-size: 44px;
     }
     @media all and (max-width: 900px) {
-      font-size: 48px;
+      font-size: 40px;
       width: 80%;
       line-height: 120%;
     }
@@ -3953,6 +3953,9 @@ section.reviews {
       overflow: visible;
       max-width: 1396px;
       padding: 0 68px;
+      @media all and (max-width: 768px) {
+        padding: 0;
+      }
       .slick-slider{
         @media all and (max-width: 768px) {
           width: calc(100% - 100px);
@@ -4300,6 +4303,7 @@ section.reviews {
   @media all and (max-width: 500px) {
     padding: 50px 20px 0 20px;
   }
+
 }
 
 .wishlist-title {
@@ -4311,12 +4315,103 @@ section.reviews {
 .yith_wcwl_wishlist_footer {
   display: none;
 }
-
+.page-default-head{
+  position: relative;z-index: 1
+;
+  @media all and (max-width: 1400px) {
+    padding: 200px 50px 40px 50px;
+  }
+  @media all and (max-width: 1180px) {
+    padding: 70px 50px 40px 50px;
+  }
+  @media all and (max-width: 500px) {
+    padding: 70px 20px 0 20px;
+    margin-bottom: 0;
+  }
+  .apiary__links{
+    justify-content: flex-start;
+    > div{
+      width: auto;
+      margin-right: 20px;
+      @media all and (max-width: 600px) {
+        width: 100%;
+        margin-bottom: 40px;
+        max-width: none;
+        margin-right: 0;
+      }
+    }
+  }
+  width: 100%;
+  max-width: 1440px;
+  padding: 200px 100px 40px 100px;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  @media all and (max-width: 1024px) {
+    flex-direction: column-reverse;
+  }
+  &__cont{
+    width: calc(60% - 40px);
+    @media all and (max-width: 1024px) {
+      width: 100%;
+    }
+  }
+  &__image{
+    width: 40%;
+    @media all and (max-width: 1024px) {
+      width: 100%;
+      margin-bottom: 40px;
+      max-width: 400px;
+    }
+    @media all and (max-width: 500px) {
+      width: 100%;
+      max-width: none;
+    }
+    img{
+      max-width: 100%;
+      height: auto;
+      border-radius: 18px;
+      box-shadow: 4px 4px 35px rgba(0, 0, 0, 0.14);
+    }
+  }
+  &__title{
+    font-size: 36px;
+    line-height: 44px;
+    font-family: Montserrat-Bold;
+  }
+  &__subtitle{
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 30px;
+    font-family: Montserrat-Light;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+}
+.single-service.page-default{
+  padding-top: 40px;
+}
 .page-default {
   position: relative;
   z-index: 1;
   .entry-content {
     margin-top: 30px;
+  }
+  h1{
+
+  }
+  article{
+    margin-bottom: 0;
+    width: 100%;
+    img{
+      max-width: 100%;
+      height: auto;
+    }
+    padding: 0;
+    .post-thumbnail{
+      //display: none;
+    }
   }
 
   .default__title {
@@ -4324,6 +4419,7 @@ section.reviews {
     position: relative;
     text-align: left;
     padding: 0;
+    margin-left: 0;
     @media all and (max-width: 768px) {
       font-size: 24px;
     }

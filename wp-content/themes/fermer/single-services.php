@@ -1,28 +1,28 @@
 <?php
 get_header();
+$post_id = get_the_ID();
 ?>
-
-    <main id="page-default" class="page-default">
-        <div class="default__title section-title">
-            <?php the_title();?>
+    <div class="page-default-head">
+        <div class="page-default-head__cont">
+            <div class="page-default-head__title">
+                <?php the_title();?>
+            </div>
+            <div class="page-default-head__subtitle">
+                <?php the_content();?>
+            </div>
+            <div class="apiary__links">
+                <div class="apiary__link js-exursion">
+                    <a href="<?php echo the_field('zakazat_ekskursiyu_ssylka', 5); ?>">заказать экскурсию</a>
+                </div>
+                <div class="apiary__link">
+                    <a href="<?php echo the_field('perejti_v_katalog_ssylka', 5); ?>">перейти в каталог</a>
+                </div>
+            </div>
         </div>
-
-        <?php
-        while ( have_posts() ) :
-            the_post();
-
-            get_template_part( 'template-parts/content', 'page' );
-
-            // If comments are open or we have at least one comment, load up the comment template.
-            if ( comments_open() || get_comments_number() ) :
-                comments_template();
-            endif;
-
-        endwhile; // End of the loop.
-        ?>
-
-    </main><!-- #main -->
-
+        <div class="page-default-head__image">
+            <?php the_post_thumbnail('full');?>
+        </div>
+    </div>
 <?php
 get_sidebar();
 get_footer();
