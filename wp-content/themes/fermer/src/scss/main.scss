@@ -1857,7 +1857,7 @@ body {
     margin-bottom: 50px;
     @media all and (max-width: 968px) {
       line-height: 100%;
-      margin-bottom: 0;
+      margin-bottom: 30px;
     }
     @media all and (max-width: 768px) {
       font-size: 30px;
@@ -1873,15 +1873,15 @@ body {
   &__item-cont {
     p {
       font-weight: 300;
-      font-size: 18px;
-      line-height: 30px;
+      font-size: 15px;
+      line-height: 166%;
       font-family: Montserrat-Light;
       @media all and (max-width: 768px) {
-        font-size: 16px;
+        font-size: 14px;
         line-height: 170%;
       }
       @media all and (max-width: 500px) {
-        font-size: 14px;
+        font-size: 12px;
       }
     }
   }
@@ -5268,6 +5268,31 @@ section.reviews {
     .eko-slider__item-title{
       opacity: 1;
     }
+  }
+}
+.page-default-head__image{
+  position: relative;
+  @media all and (max-width: 1024px) {
+    padding-bottom: 80px;
+  }
+    .slick-list{
+      overflow: hidden;
+      .slick-track{
+        display: flex!important;
+      }
+    }
+  .slick-arrow{
+    bottom: -50px;
+    top: auto!important;
+    @media all and (max-width: 1024px) {
+      bottom: 0px;
+    }
+  }
+  .slick-next{
+    right: 30% !important;
+  }
+  .slick-prev{
+    left: 30% !important;
   }
 }
 @import "media";

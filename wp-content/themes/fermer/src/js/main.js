@@ -327,6 +327,16 @@ $(document ).ready(function() {
         });
     }
 
+    if ($('.page-default-head').length){
+        $('.page-default-head__image').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            // autoplay: true,
+            arrows:true,
+            autoplaySpeed: 2000
+        });
+    }
+
 });
 
 
